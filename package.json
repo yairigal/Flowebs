@@ -1,0 +1,17 @@
+{
+  "name": "startbootstrap-shop-homepage-3.3.7",
+  "version": "1.0.0",
+  "description": "[Shop Homepage](http://startbootstrap.com/template-overviews/shop-homepage/) is a basic HTML online store homepage template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "ejs-lint": "^0.3.0",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1"
+  }
+}

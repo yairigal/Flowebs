@@ -1,0 +1,9 @@
+<% if(data.images.logos.indexOf(img) == 0){%>
+<div class="item active">
+   <img class="slide-image" src= <%= img %>  alt="">
+</div>
+<%}else{%>
+<div class="item">
+   <img class="slide-image" src= <%= img %>  alt="">
+</div>
+<%}%>
