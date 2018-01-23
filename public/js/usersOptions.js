@@ -2,7 +2,7 @@ function hideCatalogButton() {
     $('#flower-catalog').hide();
 }
 
-function hideManagment() {
+function hideManagement() {
     $('#list-group').hide();
 }
 
@@ -20,7 +20,7 @@ function showCatalogButton() {
     });
 }
 
-function showManagmentButton() {
+function showManagementButton() {
     $('#categories').show();
 }
 
@@ -61,7 +61,7 @@ function loadHtmlToBody(data) {
 function showCategories() {
     $('#categories').show();
     $('#users-man').click(function () {
-        $.get("/users",function (data,status) {
+        $.get("/users?id=" + globalId ,function (data,status) {
             loadHtmlToBody(data);
         })
     });
@@ -74,7 +74,7 @@ function showCategories() {
 
 
 $(function() {
-    //hideManagment();
+    //hideManagement();
     //$('.col-md-3').hide();
     //hideCatalogButton();
     //hideCatalog();

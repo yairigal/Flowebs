@@ -8,6 +8,7 @@
    #
    ##################################################################### */
 
+var globalId;
 
 //when document is ready
 $(function () {
@@ -27,6 +28,8 @@ $(function () {
 
     function afterSuccessLogin() {
         $('.close').click();
+        showAllButtons();
+        changeToLogoutButton();
 
     }
 
@@ -35,7 +38,7 @@ $(function () {
             case "login-form":
                 var $lg_username = $('#login_username').val();
                 var $lg_password = $('#login_password').val();
-                if ($lg_username == "ERROR") {
+                if ($lg_username === "ERROR") {
                     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error", () => afterFailedLogin());
                 } else {
                     $.post("/login",
@@ -44,19 +47,15 @@ $(function () {
                             pass: $lg_password
                         },
                         function (data, status) {
-                            if (data == 'GOOD') {
-                                msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK",function () {
-                                    afterSuccessLogin();
-                                    showAllButtons();
-                                    changeToLogoutButton();
-                                });
-                                //enableCatalogButton();
-                            } else if (data == 'BAD') {
+                            if (data !== "BAD") {
+                                globalId = data;
+                                msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK",afterSuccessLogin);
+                            } else {
                                 msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Username or password is Incorrect", () => afterFailedLogin());
                                 /*                            showCatalog();
                                                             hideWelcomePage()
                                                             showCatalogButton();
-                                                            showManagmentButton();
+                                                            showFManagmentButton();
                                                            changeToLogoutButton();*/
                             }
                         });
