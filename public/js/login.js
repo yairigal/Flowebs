@@ -8,6 +8,7 @@
    #
    ##################################################################### */
 
+
 var globalId;
 
 //when document is ready
@@ -21,6 +22,13 @@ $(function () {
     var $msgAnimateTime = 150;
     var $msgShowTime = 2000;
 
+    $('.button-collapse').sideNav();
+    $('.parallax').parallax();
+
+    $('#logout_button_nav').hide();
+    $('#logout_button_nav_collapase').hide();
+    $('#login_button_nav').show();
+    $('#login_button_nav_collapase').show();
 
     function afterFailedLogin() {
         //$('.close').click();
@@ -28,6 +36,14 @@ $(function () {
 
     function afterSuccessLogin() {
         $('.close').click();
+        $('.button-collapse').click();
+
+        $('#logout_button_nav').show();
+        $('#logout_button_nav_collapase').show();
+        $('#login_button_nav').hide();
+        $('#login_button_nav_collapase').hide();
+
+
         showAllButtons();
         changeToLogoutButton();
 
@@ -40,7 +56,8 @@ $(function () {
                 var $lg_password = $('#login_password').val();
                 if ($lg_username === "ERROR") {
                     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error", () => afterFailedLogin());
-                } else {
+                }
+                else {
                     $.post("/login",
                         {
                             username: $lg_username,
@@ -49,17 +66,12 @@ $(function () {
                         function (data, status) {
                             if (data !== "BAD") {
                                 globalId = data;
-                                msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK",afterSuccessLogin);
+                                msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK", afterSuccessLogin);
                             } else {
                                 msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Username or password is Incorrect", () => afterFailedLogin());
-                                /*                            showCatalog();
-                                                            hideWelcomePage()
-                                                            showCatalogButton();
-                                                            showFManagmentButton();
-                                                           changeToLogoutButton();*/
+
                             }
                         });
-
                 }
                 return false;
                 break;
@@ -142,9 +154,13 @@ $(function () {
 });
 
 function logout() {
-    $.get('/logout',function (data,status) {
+    $.get('/logout', function (data, status) {
         $('#logout_button_nav').hide();
+        $('#logout_button_nav_collapase').hide();
         $('#login_button_nav').show();
+        $('#login_button_nav_collapase').show();
+        $('.button-collapse').click();
+
         hideCategories();
         loadHtmlToBody(data);
     });

@@ -3,120 +3,168 @@
 
 <head>
 
+    <!-- Page Title -->
+    <title>Flowebs</title>
+
+    <!-- Metadata -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Materialize -->
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!--<link href="/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- Custom Styles -->
     <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <!--<link href="css/shop-homepage.css" rel="stylesheet">-->
+    <!--<link href="css/freelancer.min.css" rel="stylesheet">-->
+    <!--<link href="/css/magnific-popup.css" rel="stylesheet" type="text/css">-->
 
-    <!-- Custom CSS -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/freelancer.min.css" rel="stylesheet">
-
+    <!-- Fonts -->
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
           type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Plugin CSS -->
-    <link href="/css/magnific-popup.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Flowebs</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li id="flower-catalog">
-                    <a href="#">Catalog</a>
-                </li>
-                <li>
-                    <a href="#">Contact Us</a>
-                </li>
-                <li>
-                    <a href="#" id="login_button_nav" class="btn  btn-lg" role="button" data-toggle="modal"
-                       data-target="#login-modal">Login</a>
-                </li>
-                <li>
-                    <a href="#" id="logout_button_nav" role="button">Logout</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-
-<!-- Page Content Catalog-->
-<div class="container" id="default-container">
-    <div class="col-md-3" id="categories">
-        <p class="lead">Flower Catalog in the Web</p>
-        <div class="list-group" id="list-group">
-            <a href="#" id="users-man" class="list-group-item">Users Management</a>
-            <a href="#" id="branches-man" class="list-group-item">Branches Management</a>
-        </div>
-    </div>
-    <div id="dynamic-body">
-        <div class="col-md-9" id="welcome_page">
-            <img class="img-fluid mb-5 d-block mx-auto pagination-centered" id="logo" src="images/logos/profile.png"
-                 alt="">
-            <h1 class="text-uppercase mb-0">Start Bootstrap</h1>
-            <hr class="star-light">
-            <h2 class="font-weight-light mb-0">Please Login To Access All Features</h2>
-            <a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Login</a>
-        </div>
-    </div>
-
-</div>
-<!--Default Page Content -->
-
-<div class="container">
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright Yair & Daniel</p>
+<div id="header">
+    <nav class="container-fluid grey darken-3">
+        <div class="container grey darken-3">
+            <div id="logo" class="nav-wrapper grey darken-3">
+                <a href="#" class="brand-logo"><i class="material-icons">cloud</i>Flowebs</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="menu-item" id="contact-us-btn" href="#contact">Contact Us</a></li>
+                    <li><a class="menu-item" id="flower-catalog">Catalog</a></li>
+                    <li><a class="menu-item" id="login_button_nav" role="button" data-toggle="modal"
+                           data-target="#login-modal">Login</a></li>
+                    <li><a class="menu-item" id="logout_button_nav" onclick="logout()">Logout</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a id="contact-us-btn_collapase" href="#contact">Contact Us</a></li>
+                    <li><a id="flower-catalog_collapase">Catalog</a></li>
+                    <li><a id="login_button_nav_collapase" role="button" data-toggle="modal" data-target="#login-modal">Login</a>
+                    </li>
+                    <li><a id="logout_button_nav_collapase" onclick="logout()">Logout</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
-
+    </nav>
 </div>
-<!-- /.container -->
 
-<!-- BEGIN # MODAL LOGIN -->
+<div id="content" id="default-container">
+    <div id="index-banner" class="white-text parallax-container">
+        <div class="white-text section no-pad-bot">
+            <div id="parallax-container" class="container white-text">
+                <br><br><br>
+                <div id="parallax-text" class="header center text-lighten-2 white-text">
+                    <img id="parallax-logo" class="hide-on-small-and-down" src="images/logo-white.png">
+                    <span>
+                        <span>Flowebs</span>
+
+                    </span>
+                </div>
+                <div id="moto" class="header col s12 light">Our Moto is The Best!</div>
+                <div class="row center">
+                    <a id="login-button-parallax" class="btn-large waves-effect waves-light grey darken-3" role="button"
+                       data-toggle="modal" data-target="#login-modal">Login</a>
+                </div>
+                <br><br>
+
+            </div>
+        </div>
+        <div class="parallax"><img id="background-image" src="images/background.jpg" alt="Unsplashed background img 1">
+        </div>
+    </div>
+
+    <br><br>
+
+    <div id="info" class="container">
+
+        <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">cloud</i></h2>
+                        <h5 class="center">Available Anywhere</h5>
+
+                        <p class="light info">We did most of the heavy lifting for you to provide a default stylings
+                            that incorporate our custom components. Additionally, we refined animations and transitions
+                            to provide a smoother experience for developers. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit. Maecenas in elit quam. Nam a libero metus. Donec ac tellus ex. Cras eget
+                            sapien eu velit tincidunt ornare. Suspendisse mollis finibus dui.</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">local_shipping</i></h2>
+                        <h5 class="center">Fast Delivery</h5>
+
+                        <p class="light info">Flowebs offers high speed delivery to most populated environments.
+                            Delivery will be protected by high end tech companies that professions delivery protection.
+                            Deliveries will arrive between 2 and 5 work days. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit. Maecenas in elit quam. Nam a libero metus. Donec ac tellus ex. Cras eget
+                            sapien eu velit tincidunt ornare. Suspendisse mollis finibus dui.</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">info</i></h2>
+                        <h5 class="center">About</h5>
+
+                        <p class="light info">Flowebs is a new company that will provide high quality flowers and
+                            delivery services to it's clients. Flowebs is scheduled to begin operations on Jan 28, 2018.
+                            Flowebs will be a partnership, owned and operated by Yair Yigal and Danmi. Lorem ipsum dolor
+                            sit amet, consectetur adipiscing elit. Maecenas in elit quam. Nam a libero metus. Donec ac
+                            tellus ex. Cras eget sapien eu velit tincidunt ornare. Suspendisse mollis finibus dui.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<footer class="page-footer grey darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h4 id="contact" class="white-text">Contact Us</h4>
+                <p class="grey-text text-lighten-4">Danmi: <a class="white-text" href="https://t.me/danmi"> t.me/danmi</a></p>
+                <p class="grey-text text-lighten-4">Yair Yigal: <a class="white-text" href="https://t.me/YairYigal">
+                        t.me/YairYigal</a></p>
+
+            </div>
+        </div>
+    </div>
+    <div id="copyright" class="footer-copyright grey darken-4">
+        <div class="container-fluid">
+            <div id="by">
+                © Made by <a class="white-text">Danmi & YairN</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
      style="display: none;">
     <div class="modal-dialog">
@@ -212,21 +260,24 @@
         </div>
     </div>
 </div>
-<!-- END # MODAL LOGIN -->
+
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
+<!-- Materialize -->
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+<!-- Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
 
+<!-- Custom Scripts -->
 <script src="js/login.js"></script>
-
 <script src="js/usersOptions.js"></script>
-
 <script src="js/users-management.js"></script>
-<script src="../js/database-manager.js"></script>
 
 </body>
 
 </html>
+
+
