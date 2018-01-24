@@ -24,6 +24,7 @@ $(function () {
 
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
+    $('.modal').modal();
 
     $('#logout_button_nav').hide();
     $('#logout_button_nav_collapase').hide();

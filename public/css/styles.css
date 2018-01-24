@@ -3,7 +3,7 @@
 }
 
 #logo {
-    padding-left: 15px;
+    /*padding-left: 15px;*/
 }
 
 .menu-item {
@@ -69,6 +69,17 @@
 
 #copyright {
     margin-top: 50px;
+}
+
+#modal-logo {
+    /*padding: 100px;*/
+    height: 250px;
+    margin-top: 0px;
+
+}
+
+#login-modal {
+    width: 600px;
 }
 
 
