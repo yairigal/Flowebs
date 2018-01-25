@@ -32,7 +32,8 @@ function initGet() {
 
     app.get('/logout', function (req, res) {
         data.currentUser = undefined;
-        res.sendFile(__dirname + '/views/WelcomePage.html');
+        // res.sendFile(__dirname + '/views/WelcomePage.html');
+        res.render("info", null);
     });
 }
 
@@ -71,7 +72,8 @@ function initPost() {
         data.currentUser = getUser(req);
 
         if (data.currentUser) // login ok
-            res.send(200, data.currentUser.id);
+            // res.send(200, data.currentUser.id);
+            res.render('management-cards', data);
         else // login error
             res.send("BAD");
     });

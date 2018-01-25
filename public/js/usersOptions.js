@@ -15,7 +15,7 @@ function showCatalogButton() {
     catBtn.show();
     catBtn.click(function () {
         $.get("/catalog", function(data, status){
-            loadHtmlToBody(data);
+            loadHtmlContent(data);
         });
     });
 }
@@ -54,20 +54,18 @@ function hideCategories() {
     $('#categories').hide();
 }
 
-function loadHtmlToBody(data) {
-    $('#dynamic-body').html(data);
-}
+
 
 function showCategories() {
     $('#categories').show();
     $('#users-man').click(function () {
         $.get("/users?id=" + globalId ,function (data,status) {
-            loadHtmlToBody(data);
+            loadHtmlContent(data);
         })
     });
     $('#branches-man').click(function () {
         $.get("/branches",function (data,status) {
-            loadHtmlToBody(data);
+            loadHtmlContent(data);
         })
     });
 }
@@ -83,3 +81,11 @@ $(function() {
     hideCatalogButton();
     //$('#categories').hide();
 });
+
+function loadUsersManagement(){
+    alert("working!")
+}
+
+function loadStoresManagement(){
+    alert("working!")
+}

@@ -25,7 +25,7 @@ function initEditUser(userid) {
             };
             $.post("/edit_user", user, function (data, status) {
                 $("#editUserModal").modal('hide');
-                loadHtmlToBody(data);
+                loadHtmlContent(data);
             });
         });
 
@@ -33,7 +33,7 @@ function initEditUser(userid) {
             let id = $('#editUserModalTitle').val();
             $.post("/del_user?id=" + id,null, function (data, status) {
                 $("#editUserModal").modal('hide');
-                loadHtmlToBody(data);
+                loadHtmlContent(data);
             } )
         });
     });
@@ -59,7 +59,7 @@ function initAddButton() {
         };
         $.post("/add_user", user, function (data, status) {
             $("#addUserModal").modal('hide');
-            loadHtmlToBody(data);
+            loadHtmlContent(data);
         });
     });
 }

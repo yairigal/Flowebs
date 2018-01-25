@@ -9,7 +9,6 @@
 }
 
 
-
 .menu-item {
     font-size: 18px;
 }
@@ -77,12 +76,10 @@
 
 #modal-logo {
     /*padding: 100px;*/
-    width: 250px;
+    width: 180px;
     margin-bottom: 20px;
 
 }
-
-
 
 .form {
     margin-top: 50px;
@@ -108,7 +105,7 @@
     }
 }
 
-@media (min-width: 762px){
+@media (min-width: 600px){
     #login-modal {
         width: 400px;
     }
@@ -150,4 +147,45 @@
     /*padding-left: 15px;*/
     text-align: center;
 }
+
+.card-image-jpg {
+    max-width: 100%;
+    max-hight: 100%;
+    filter: brightness(0.75)
+
+}
+
+.card-image {
+    position: relative;
+}
+.screen {
+    width: 200px;
+    height: 30px;
+    background: black;
+    position: absolute;
+    fill: rgb(255,255,255)
+
+}
+
+.image-container {
+    position: relative;
+}
+.image-container .screen {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #FFF;
+    bottom: 0;
+    display: block;
+    background: rgba(0, 0, 0, .2);
+}
+
+
+.card-title {
+    font-size: 28px !important;
+}
+
+
+
 
