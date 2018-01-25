@@ -41,10 +41,10 @@
 
 <div id="header">
     <nav class="container-fluid grey darken-3">
-        <div class="container grey darken-3">
+        <div id="header-container" class="container grey darken-3">
             <div id="logo" class="nav-wrapper grey darken-3">
                 <a href="#" class="brand-logo"><i class="material-icons">cloud</i>Flowebs</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a id="menu-button" href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a class="menu-item" id="contact-us-btn" href="#contact">Contact Us</a></li>
                     <li><a class="menu-item" id="flower-catalog">Catalog</a></li>
@@ -52,11 +52,10 @@
                     <li><a class="menu-item" id="logout_button_nav" onclick="logout()">Logout</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li><a id="contact-us-btn_collapase" href="#contact">Contact Us</a></li>
-                    <li><a id="flower-catalog_collapase">Catalog</a></li>
-                    <li><a id="login_button_nav_collapase" role="button" data-toggle="modal" data-target="#login-modal">Login</a>
-                    </li>
-                    <li><a id="logout_button_nav_collapase" onclick="logout()">Logout</a></li>
+                    <li><a id="contact-us-btn-collapse" href="#contact">Contact Us</a></li>
+                    <li><a id="flower-catalog-collapse">Catalog</a></li>
+                    <li><a id="login_button_nav_collapse" class="modal-trigger" href="#login-modal">Login</a></li>
+                    <li><a id="logout_button_nav_collapse" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -72,7 +71,6 @@
                     <img id="parallax-logo" class="hide-on-small-and-down" src="images/logo-white.png">
                     <span>
                         <span>Flowebs</span>
-
                     </span>
                 </div>
                 <div id="moto" class="header col s12 light">Our Moto is The Best!</div>
@@ -163,122 +161,37 @@
 <!-- Login Modal -->
 <div id="login-modal" class="modal">
     <div class="modal-content">
-        <div id="id1" class="center">
+        <div class="center">
             <img id="modal-logo" class="circle" src="images/logo-dark-grey.png">
         </div>
+        <div id="login-label" class="text-center">Login:</div>
+        <br>
+        <form class="col s12">
+            <div class="row">
+                <div class="center form">
+                    <div class="input-field">
+                        <i id="person-login-icon" class="material-icons prefix">person</i>
+                        <input placeholder="Username" id="login_username" type="text" class="validate">
+                        <label for="first_name">Username:</label>
+                    </div>
+                    <br>
+                    <div class="input-field">
+                        <i id="lock-login-icon" class="material-icons prefix">lock</i>
+                        <input placeholder="Password" id="login_password" type="password" class="validate">
+                        <label for="first_name">Password</label>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </form>
+
+
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <button onclick="login()" class="modal-action waves-effect waves-green btn-flat">Login</button>
     </div>
 </div>
-
-
-<!--&lt;!&ndash; BEGIN # MODAL LOGIN &ndash;&gt;-->
-<!--<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"-->
-    <!--<div class="modal-dialog">-->
-        <!--<div class="modal-content">-->
-            <!--<div class="modal-header" align="center">-->
-                <!--<img class="img-circle" id="img_logo" src="http://bootsnipp.com/img/logo.jpg">-->
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                    <!--<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>-->
-                <!--</button>-->
-            <!--</div>-->
-
-            <!--&lt;!&ndash; Begin # DIV Form &ndash;&gt;-->
-            <!--<div id="div-forms">-->
-
-                <!--&lt;!&ndash; Begin # Login Form &ndash;&gt;-->
-                <!--<form id="login-form">-->
-                    <!--<div class="modal-body">-->
-                        <!--<div id="div-login-msg">-->
-                            <!--<div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>-->
-                            <!--<span id="text-login-msg">Type your username and password.</span>-->
-                        <!--</div>-->
-                        <!--<input id="login_username" class="form-control" type="text"-->
-                               <!--placeholder="Username (type ERROR for error effect)" required>-->
-                        <!--<input id="login_password" class="form-control" type="password" placeholder="Password" required>-->
-                        <!--<div class="checkbox">-->
-                            <!--<label>-->
-                                <!--<input type="checkbox"> Remember me-->
-                            <!--</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="modal-footer">-->
-                        <!--<div>-->
-                            <!--<button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>-->
-                        <!--</div>-->
-                        <!--<div>-->
-                            <!--<button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>-->
-                            <!--<button id="login_register_btn" type="button" class="btn btn-link">Register</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-                <!--&lt;!&ndash; End # Login Form &ndash;&gt;-->
-
-                <!--&lt;!&ndash; Begin | Lost Password Form &ndash;&gt;-->
-                <!--<form id="lost-form" style="display:none;">-->
-                    <!--<div class="modal-body">-->
-                        <!--<div id="div-lost-msg">-->
-                            <!--<div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>-->
-                            <!--<span id="text-lost-msg">Type your e-mail.</span>-->
-                        <!--</div>-->
-                        <!--<input id="lost_email" class="form-control" type="text"-->
-                               <!--placeholder="E-Mail (type ERROR for error effect)" required>-->
-                    <!--</div>-->
-                    <!--<div class="modal-footer">-->
-                        <!--<div>-->
-                            <!--<button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>-->
-                        <!--</div>-->
-                        <!--<div>-->
-                            <!--<button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>-->
-                            <!--<button id="lost_register_btn" type="button" class="btn btn-link">Register</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-                <!--&lt;!&ndash; End | Lost Password Form &ndash;&gt;-->
-
-                <!--&lt;!&ndash; Begin | Register Form &ndash;&gt;-->
-                <!--<form id="register-form" style="display:none;">-->
-                    <!--<div class="modal-body">-->
-                        <!--<div id="div-register-msg">-->
-                            <!--<div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>-->
-                            <!--<span id="text-register-msg">Register an account.</span>-->
-                        <!--</div>-->
-                        <!--<input id="register_username" class="form-control" type="text"-->
-                               <!--placeholder="Username (type ERROR for error effect)" required>-->
-                        <!--<input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>-->
-                        <!--<input id="register_password" class="form-control" type="password" placeholder="Password"-->
-                               <!--required>-->
-                    <!--</div>-->
-                    <!--<div class="modal-footer">-->
-                        <!--<div>-->
-                            <!--<button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>-->
-                        <!--</div>-->
-                        <!--<div>-->
-                            <!--<button id="register_login_btn" type="button" class="btn btn-link">Log In</button>-->
-                            <!--<button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-                <!--&lt;!&ndash; End | Register Form &ndash;&gt;-->
-
-            <!--</div>-->
-            <!--&lt;!&ndash; End # DIV Form &ndash;&gt;-->
-
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash; END # MODAL LOGIN &ndash;&gt;-->
-
-
-
-
-
-
-
-
-
-
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>

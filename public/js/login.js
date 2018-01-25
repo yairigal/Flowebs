@@ -27,80 +27,17 @@ $(function () {
     $('.modal').modal();
 
     $('#logout_button_nav').hide();
-    $('#logout_button_nav_collapase').hide();
+    $('#logout_button_nav_collapse').hide();
     $('#login_button_nav').show();
-    $('#login_button_nav_collapase').show();
-
-    function afterFailedLogin() {
-        //$('.close').click();
-    }
-
-    function afterSuccessLogin() {
-        $('.close').click();
-        $('.button-collapse').click();
-
-        $('#logout_button_nav').show();
-        $('#logout_button_nav_collapase').show();
-        $('#login_button_nav').hide();
-        $('#login_button_nav_collapase').hide();
+    $('#login_button_nav_collapae').show();
+    $('#flower-catalog').hide();
+    $('#flower-catalog-collapse').hide();
 
 
-        showAllButtons();
-        changeToLogoutButton();
 
-    }
 
-    $("form").submit(function () {
-        switch (this.id) {
-            case "login-form":
-                var $lg_username = $('#login_username').val();
-                var $lg_password = $('#login_password').val();
-                if ($lg_username === "ERROR") {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error", () => afterFailedLogin());
-                }
-                else {
-                    $.post("/login",
-                        {
-                            username: $lg_username,
-                            pass: $lg_password
-                        },
-                        function (data, status) {
-                            if (data !== "BAD") {
-                                globalId = data;
-                                msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK", afterSuccessLogin);
-                            } else {
-                                msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Username or password is Incorrect", () => afterFailedLogin());
 
-                            }
-                        });
-                }
-                return false;
-                break;
-            case "lost-form":
-                var $ls_email = $('#lost_email').val();
-                if ($ls_email == "ERROR") {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
-                } else {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Send OK");
-                }
-                return false;
-                break;
-            case "register-form":
-                var $rg_username = $('#register_username').val();
-                var $rg_email = $('#register_email').val();
-                var $rg_password = $('#register_password').val();
-                if ($rg_username == "ERROR") {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error");
-                } else {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Register OK");
-                }
-                return false;
-                break;
-            default:
-                return false;
-        }
-        return false;
-    });
+
 
     $('#login_register_btn').click(function () {
         modalAnimate($formLogin, $formRegister)
@@ -154,17 +91,66 @@ $(function () {
     }
 });
 
+function login() {
+
+    let username = $('#login_username').val();
+    let password = $('#login_password').val();
+    $.post("/login",
+        {
+            username: username,
+            pass: password
+        },
+        function (data, status) {
+            if (data !== "BAD") {
+                globalId = data;
+                let $toastContent = $('<span>Login Successful</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
+                Materialize.toast($toastContent, 1500, '',function(){afterSuccessLogin()});
+
+            } else {
+                let $toastContent = $('<span>Wrong Password or Username!</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
+                Materialize.toast($toastContent, 1500);
+
+            }
+        });
+}
+
 function logout() {
     $.get('/logout', function (data, status) {
         $('#logout_button_nav').hide();
-        $('#logout_button_nav_collapase').hide();
+        $('#logout_button_nav_collapse').hide();
         $('#login_button_nav').show();
-        $('#login_button_nav_collapase').show();
-        $('.button-collapse').click();
-
-        hideCategories();
+        $('#login_button_nav_collapse').show();
+        $('#flower-catalog').hide();
+        $('#flower-catalog-collapse').hide();
+        $('.button-collapse').sideNav('hide');
+        $('#login-button-parallax').show();
         loadHtmlToBody(data);
+        let $toastContent = $('<span>Logout Successful</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
+        Materialize.toast($toastContent, 1500);
+
     });
+
 }
 
+function afterSuccessLogin() {
+    //$('.close').click();
+    $('#login-modal').modal('close')
+    $('#login-button-parallax').hide();
+    $('.button-collapse').sideNav('hide');
 
+    $('#logout_button_nav').show();
+    $('#logout_button_nav_collapse').show();
+    $('#flower-catalog').show();
+    $('#flower-catalog-collapse').show();
+    $('#login_button_nav').hide();
+    $('#login_button_nav_collapse').hide();
+
+}
+
+function afterFailedLogin() {
+    //$('.close').click();
+}
+
+function dismissToasts(){
+    Materialize.Toast.removeAll();
+}

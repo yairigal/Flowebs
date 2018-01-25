@@ -2,9 +2,13 @@
     float: right;
 }
 
-#logo {
-    /*padding-left: 15px;*/
+@media (max-width: 991px ) {
+    #header-container {
+        width: 98%;
+    }
 }
+
+
 
 .menu-item {
     font-size: 18px;
@@ -73,13 +77,77 @@
 
 #modal-logo {
     /*padding: 100px;*/
-    height: 250px;
-    margin-top: 0px;
+    width: 250px;
+    margin-bottom: 20px;
 
 }
 
-#login-modal {
-    width: 600px;
+
+
+.form {
+    margin-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
+.toast {
+    /*width: 400px !important;*/
+    color: white !important;
+    font-size: 20px;
+}
+
+@media (min-width: 991px){
+    #toast-container {
+        top: auto !important;
+        left: auto !important;
+        bottom: 7%;
+        right:5%;
+    }
+    .toast {
+        width: 500px !important;
+    }
+}
+
+@media (min-width: 762px){
+    #login-modal {
+        width: 400px;
+    }
+}
+
+
+
+.prefix{
+    margin-left: -10px;
+    color: #424242
+}
+
+#person-login-icon{
+    margin-top: 20px;
+}
+
+#lock-login-icon {
+    margin-top: 10px;
+}
+
+.input-field .prefix.active {
+    color: #4CAF50;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+    color: #4CAF50 !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+    border-bottom: 1px solid #4CAF50 !important;
+    box-shadow: 0 1px 0 0 #4CAF50 !important
+}
+
+#login-label {
+    /*color: #4CAF50;*/
+    margin-top: -5px;
+    font-size: 25px;
+    /*padding-left: 15px;*/
+    text-align: center;
+}
 
