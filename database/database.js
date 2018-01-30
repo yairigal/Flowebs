@@ -16,17 +16,17 @@ branches = [
     {active:true,name:"Branch2",id:2}
     ];
 users = {
-    "63": {
-        active: true,
-        id: 63,
-        type: 'MANAGER',
-        username: 'yairigal',
-        password: '123456'
+    "0":{
+        active: false,
+        id: 100,
+        type: 'Manager',
+        username: '',
+        password: ''
     },
     "1": {
         active: true,
         id: 1,
-        type: 'WORKER',
+        type: 'Worker',
         username: 'danmi',
         password: '123456',
         branchid: 1
@@ -34,25 +34,32 @@ users = {
     "2": {
         active: true,
         id: 2,
-        type: 'WORKER',
+        type: 'Worker',
         username: 'work1',
         password: '123',
         branchid: 2
     },
     "3": {
-        active: false,
+        active: true,
         id: 3,
-        type: 'CLIENT',
+        type: 'Client',
         username: 'client1',
         password: '123'
     },
     "4": {
         active: true,
         id: 4,
-        type: 'CLIENT',
+        type: 'Client',
         username: 'client2',
         password: '123'
-    }
+    },
+    "5": {
+        active: true,
+        id: 63,
+        type: 'Manager',
+        username: 'yairigal',
+        password: '123456'
+    },
 };
 
 flowers = products;

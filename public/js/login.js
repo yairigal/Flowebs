@@ -28,25 +28,21 @@ $(function () {
 });
 
 function login() {
-
     let username = $('#login_username').val();
     let password = $('#login_password').val();
-    $.post("/login",
-        {
-            username: username,
-            pass: password
-        },
-        function (data, status) {
-            if (data !== "BAD") {
-                globalId = data;
-                let $toastContent = $('<span>Login Successful</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
-                Materialize.toast($toastContent, 1500, '',function(){afterSuccessLogin(data)});
+    $.post("/login", { username: username, pass: password }, function (data, status) {
+        if (data !== "BAD") {
+            globalId = data;
+            let $toastContent = $('<span>Login Successful</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
+            Materialize.toast($toastContent, 200, '', function () {
+                afterSuccessLogin(data)
+            });
 
-            } else {
-                let $toastContent = $('<span>Wrong Password or Username!</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
-                Materialize.toast($toastContent, 1500);
+        } else {
+            let $toastContent = $('<span>Wrong Password or Username!</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
+            Materialize.toast($toastContent, 1500);
 
-            }
+        }
         });
 }
 

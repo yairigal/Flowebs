@@ -1,154 +1,46 @@
 <div class="row">
-    <% for(var user in data) {                                                                                                      %>
-    <%     var show = true;                                                                                                         %>
-    <%     if((data[user].type === "WORKER" || data[user].type === "MANAGER") && currentUser.type !== "MANAGER"){ %>
-    <%         show = false;                                                                                                        %>
-    <%     }                                                                                                                        %>
-    <%     if(show) {                                                                                                               %>
-                <div class="col s12 l6 xl4">
-                    <div class="card user-card white darken-1">
-                        <div class="card-font card-content grey-text text-darken-3">
-                            <span class="user-card-title card-title"><%= data[user].username %></span>
-                            <p><b>Password:</b> <%= users[user].password %></p>
-                            <p><b>Type:</b> <%= users[user].type %></p>
-                        </div>
-                        <div class="card-action user-card-action">
-                            <a onclick="initEditUser(<%= user %>)">Edit</a>
-                            <a href="#">Delete</a>
-                        </div>
-                    </div>
-                </div>
-    <%     }                                                                                                                        %>
-    <% }                                                                                                                            %>
+    <% for(var user in data) { %>
+    <% var show = true; %>
+    <% if((data[user].type === "Worker" || data[user].type === "Manager") && currentUser.type !== "Manager"){ %>
+    <% show = false; %>
+    <% } %>
+    <% if(show) { %>
+    <div class="col s12 l6 xl4">
+        <div class="card user-card hoverable white darken-1">
+            <div class="card-font card-content grey-text text-darken-3">
+                <span class="user-card-title card-title"><%= data[user].username %></span>
+                <p><b>Password:</b> <%= users[user].password %></p>
+                <p><b>Type:</b> <%= users[user].type %></p>
+            </div>
+            <div class="card-action user-card-action">
+                <a onclick="initEditUser(<%= user %>)">Edit</a>
+                <a onclick="initDeleteUser(<%= user %>)">Delete</a>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% } %>
+</div>
+<div class="row">
+    <a id="add-user-fab" class="btn-floating btn-large hoverable waves-effect waves-light right red" onclick="initAddUser()" ><i
+                class="material-icons">add</i></a>
 </div>
 
-<div id="edit-user-modal" class="modal">
+<!-- Modal Structure -->
+<div id="confirm-modal" class="modal input-modal">
     <div class="modal-content">
-        <div class="center">
-            <img id="modal-logo" class="circle" src="images/logo-red-flower.png">
-        </div>
-        <div id="#edit-user-modal-title" class="text-left"></div>
-        <br>
-        <form class="col s12">
-            <div class="row">
-                <div class="center form">
-                    <div class="input-field">
-                        <i id="person-login-icon" class="material-icons prefix">person</i>
-                        <input placeholder="Username" id="login_username" type="text" class="validate">
-                        <label for="first_name">Username:</label>
-                    </div>
-                    <br>
-                    <div class="input-field">
-                        <i id="lock-login-icon" class="material-icons prefix">lock</i>
-                        <input placeholder="Password" id="login_password" type="password" class="validate">
-                        <label for="first_name">Password</label>
-                    </div>
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </form>
-
+        <h5>Are you sure you want to delete this user?</h5>
+        <p id="undone">This action cannot be undone!</p>
     </div>
     <div class="modal-footer">
-        <button onclick="login()" class="modal-action waves-effect waves-green btn-flat">Login</button>
+        <a class="modal-action modal-close waves-effect waves-red btn-flat modal-footer-btn ">Cancel</a>
+        <a id="confirm-delete-btn" class="modal-action modal-close waves-effect waves-green btn-flat modal-footer-btn ">Delete</a>
     </div>
 </div>
+<script src="js/users-management.js"></script>
 
-<!--<div class="modal" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">-->
-<!--<div class="modal-dialog" role="document">-->
-<!--<div class="modal-content">-->
-<!--<div class="modal-header">-->
-<!--<h5 class="modal-title" id="addUserModalHeader">Add User</h5>-->
-<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--<span aria-hidden="true"></span>-->
-<!--</button>-->
-<!--</div>-->
 
-<!--<div class="modal-body">-->
-<!--<ul class="list-group">-->
 
-<!--&lt;!&ndash;Username field&ndash;&gt;-->
-<!--<div class="form-group">-->
-<!--<label class="col-md-4 control-label" for="addUserUsername">Username</label>-->
-<!--<input id="addUserUsername" name="addUserUsername" type="text" placeholder="" class="form-control input-md" required="">-->
-<!--</div>-->
 
-<!--<div class="form-group">-->
-<!--<label class="col-md-4 control-label" for="addUserPwd">Password</label>-->
-<!--<input id="addUserPwd" name="addUserPwd" type="password" placeholder="" class="form-control input-md" required="">-->
-<!--</div>-->
 
-<!--<div class="dropdown">-->
-<!--<button class="btn btn-default dropdown-toggle" type="button" id="addUserTypeBtn"-->
-<!--data-toggle="dropdown">Please Select Type-->
-<!--<button class="btn dropdown-toggle" data-toggle="dropdown">-->
-<!--<span class="caret"></span></button>-->
-<!--</button>-->
-<!--<ul id="addUserTypeDropdown" class="dropdown-menu" role="menu" aria-labelledby="menu1">-->
-<!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CLIENT</a></li>-->
-<!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">WORKER</a></li>-->
-<!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">MANAGER</a></li>-->
-<!--</ul>-->
-<!--</div>-->
-<!--</ul>-->
-<!--</div>-->
 
-<!--<div class="modal-footer">-->
-<!--<button id="addUserBtn" type="button" class="btn btn-primary">Add</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="modal" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">-->
-<!--<div class="modal-dialog" role="document">-->
-<!--<div class="modal-content">-->
-<!--<div class="modal-header">-->
-<!--<h5 class="modal-title" id="edit-user-modal-title">Edit User</h5>-->
-<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--<span aria-hidden="true">&times;</span>-->
-<!--</button>-->
-<!--</div>-->
-
-<!--<div class="modal-body">-->
-<!--<ul class="list-group">-->
-
-<!--<div class="form-group">-->
-<!--<label class="col-md-4 control-label" for="editUserUsername">Username</label>-->
-<!--<input id="editUserUsername" name="editUserUsername" type="text" placeholder=""-->
-<!--class="form-control input-md" required="">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<label class="col-md-4 control-label" for="editUserPwd">Password</label>-->
-<!--<input id="editUserPwd" name="editUserPwd" type="password" placeholder=""-->
-<!--class="form-control input-md" required="">-->
-<!--</div>-->
-<!--<div class="dropdown">-->
-<!--<button class="btn btn-default dropdown-toggle" type="button" id="editUserTypeBtn"-->
-<!--data-toggle="dropdown">Please Select Type-->
-<!--<button class="btn dropdown-toggle" data-toggle="dropdown">-->
-<!--<span class="caret"></span></button>-->
-<!--</button>-->
-<!--<ul id="editUserTypeDropdown" class="dropdown-menu" role="menu" aria-labelledby="menu1">-->
-<!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CLIENT</a></li>-->
-<!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">WORKER</a></li>-->
-<!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">MANAGER</a></li>-->
-<!--</ul>-->
-<!--</div>-->
-<!--</ul>-->
-<!--</div>-->
-<!--<div class="modal-footer">-->
-<!--<button type="button" id="editUserBtn" class="btn btn-primary">Done</button>-->
-<!--<button type="button" id="deleteUserBtn" class="btn btn-primary">Delete</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<h4>-->
-<!--<button type="button" onclick="initAddButton()" class="col-lg-4 btn-primary">Add User</button>-->
-<!--</h4>-->
-
-<!-- Login Modal -->

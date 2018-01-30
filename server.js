@@ -47,7 +47,7 @@ function initPost() {
 
     app.post('/add_user', function (req, res) {
         let user = req.body;
-        let result = (data.addUser(user));
+        let result = data.addUser(user);
         if(! result === true)
             console.log(result.message);
         res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
@@ -72,8 +72,8 @@ function initPost() {
         data.currentUser = getUser(req);
 
         if (data.currentUser) // login ok
-            // res.send(200, data.currentUser.id);
-            res.render('management-cards', data);
+            res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+            // res.render('management-cards', data);
         else // login error
             res.send("BAD");
     });
