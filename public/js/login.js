@@ -88,7 +88,6 @@ function loadHtmlContent(data) {
     $('#dynamic-content').html(data);
 }
 
-
 function dismissToasts(){
     Materialize.Toast.removeAll();
 }

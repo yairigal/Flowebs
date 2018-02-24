@@ -2,7 +2,7 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./database/database");
-
+var mongoose = require('mongoose');
 
 app.set("view engine", 'ejs');
 // These lines are for req.body
@@ -11,6 +11,14 @@ app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+mongoose.connect('mongodb://localhost/Flowebs');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log("we're connected!")
+    // we're connected!
+});
+
 
 function initGet() {
     app.get('/', function (req, res) {
@@ -18,7 +26,7 @@ function initGet() {
     });
 
     app.get('/catalog', function (req, res) {
-        res.render('Catalog', data);
+        res.render('catalog', data);
     });
 
     app.get('/users', function (req, res) {
@@ -72,8 +80,8 @@ function initPost() {
         data.currentUser = getUser(req);
 
         if (data.currentUser) // login ok
-            res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
-            // res.render('management-cards', data);
+            // res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+            res.render('management-cards', data);
         else // login error
             res.send("BAD");
     });
