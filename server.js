@@ -2,7 +2,7 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./database/database");
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 app.set("view engine", 'ejs');
 // These lines are for req.body
@@ -11,13 +11,13 @@ app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost/Flowebs');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    console.log("we're connected!")
-    // we're connected!
-});
+// mongoose.connect('mongodb://localhost/Flowebs');
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {
+//     console.log("we're connected!")
+//     // we're connected!
+// });
 
 
 function initGet() {
