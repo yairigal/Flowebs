@@ -1,12 +1,16 @@
-<div class="container-fluid">
+<div id="catalog-header" class="container-fluid">
     <div class="carousel carousel-slider center " data-indicators="true">
         <div class="carousel-fixed-item center middle-indicator">
             <div class="left">
-                <a href="Previo" class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons left  middle-indicator-text">chevron_left</i></a>
+                <a href="Previo"
+                   class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i
+                            class="material-icons left  middle-indicator-text">chevron_left</i></a>
             </div>
 
             <div class="right">
-                <a href="Siguiente" class=" moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons right middle-indicator-text">chevron_right</i></a>
+                <a href="Siguiente"
+                   class=" moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i
+                            class="material-icons right middle-indicator-text">chevron_right</i></a>
             </div>
         </div>
         <div id="carousel-background1" class="carousel-item red white-text" href="#one!">
@@ -30,5 +34,29 @@
 
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="container-fluid">
+    <div class="row">
+        <% for(i = 0;i < flowers.length;++i){ %>
+        <div class="col l3 m6 s12">
+            <div class="card">
+                <div class="waves-effect waves-block waves-light card-image image-container"
+                     onclick="loadUsersManagement()">
+                    <img class="card-image-jpg" src=<%=flowers[i].src%>>
+                    <div class="card-content">
+                        <h5><%=flowers[i].name%></h5>
+                        <div style="color: darkgray">
+                            Price: <span style="color: green"><%=flowers[i].price%></span>
+                        </div>
+
+                    </div>
+                    <div class="screen"></div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <script src="js/catalog.js"></script>

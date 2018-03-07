@@ -4,6 +4,11 @@ var path = require("path");
 var data = require("./database/database");
 // var mongoose = require('mongoose');
 
+const usersTimeout = 200;
+const addUserTimeout = 6000;
+const editUserTimeout = 6000;
+const delUserTimeout = 4000;
+
 app.set("view engine", 'ejs');
 // These lines are for req.body
 app.use(express.json());
@@ -31,7 +36,9 @@ function initGet() {
 
     app.get('/users', function (req, res) {
         // let uid =  data.users[req.query["id"]];
-        res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        setTimeout(() => {
+            res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        }, usersTimeout);
     });
 
     app.get('/branches', function (req, res) {
@@ -54,33 +61,39 @@ function initPost() {
     });
 
     app.post('/add_user', function (req, res) {
-        let user = req.body;
-        let result = data.addUser(user);
-        if(! result === true)
-            console.log(result.message);
-        res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        setTimeout(() => {
+            let user = req.body;
+            let result = data.addUser(user);
+            if (!result === true)
+                console.log(result.message);
+            res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        }, addUserTimeout);
     });
 
     app.post('/edit_user', function (req, res) {
-        let user = req.body;
-        let result = data.editUser(user);
-        if(! result === true)
-            console.log(result.message);
-        res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        setTimeout(() => {
+            let user = req.body;
+            let result = data.editUser(user);
+            if (!result === true)
+                console.log(result.message);
+            res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        }, editUserTimeout);
     });
 
     app.post('/del_user', function (req, res) {
-        let result = data.deactivateUser(req.query.id);
-        if(! result === true)
-            console.log(result.message);
-        res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        setTimeout(() => {
+            let result = data.deactivateUser(req.query.id);
+            if (!result === true)
+                console.log(result.message);
+            res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        }, delUserTimeout);
     });
 
     app.post('/login', function (req, res) {
         data.currentUser = getUser(req);
 
         if (data.currentUser) // login ok
-            // res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
+        // res.render('users-management', {data: data.getAllActiveUsers(), currentUser: data.currentUser});
             res.render('management-cards', data);
         else // login error
             res.send("BAD");
@@ -89,7 +102,7 @@ function initPost() {
 
 function generateId() {
     let ids = data.users(x => x.id);
-    return ids.max()+1;
+    return ids.max() + 1;
 }
 
 function getUser(req) {
@@ -97,12 +110,14 @@ function getUser(req) {
     let pass = req.body.pass;
     let cUser;
 
-    for (let user in data.users){
+    for (let user in data.users) {
         if (data.users[user].username === username)
-                if (data.users[user].password === pass) {
+            if (data.users[user].password === pass) {
+                if (data.users[user].active) {
                     cUser = data.users[user];
                     break;
                 }
+            }
     }
     return cUser;
 }

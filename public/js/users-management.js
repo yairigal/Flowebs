@@ -1,6 +1,12 @@
 $(function () {
     $('.modal').modal();
     $('select').material_select();
+
+    $('#loading-modal').modal({
+        dismissible: false
+    });
+
+
 });
 
 
@@ -14,9 +20,11 @@ function initEditUser(userid) {
         $('#edit-user-modal-title').text("Edit User ID: " + user.id).val(user.id);
         $('#edit-user-username').val(user.username);
         $('#edit-user-pwd').val(user.password);
-        let d = {"Manager" : "1",
-                 "Worker" : "2",
-                 "Client" : "3"};
+        let d = {
+            "Manager": "1",
+            "Worker": "2",
+            "Client": "3"
+        };
         $("#edit-select-type").val(d[user.type]).material_select();
         // $('select').val(user.type).material_select();
 
@@ -29,17 +37,28 @@ function initEditUser(userid) {
                 type: $('#edit-select-type').parent(["0"]).children()[1].value
             };
             // debugger;
-            $.post("/edit_user", user, function (data, status) {
-                $('#edit-user-modal').modal('close');
-                loadHtmlContent(data);
+            toggleLoading('open', "Updating. Please Wait...");
+            $('#edit-user-modal').modal('close');
+            $.ajax({
+                type: "POST",
+                url: "/edit_user",
+                data: user,
+                timeout: 5000,
+                error: function () {
+                    toggleLoading('close');
+                    toggleError('open');
+                },
+                success: function (data, status) {
+                    toggleLoading('close');
+                    loadHtmlContent(data);
+                }
             });
         });
-
     });
 
 }
 
-function initAddUser() {
+function initAddUser(currentUserType) {
 
     $('#add-user-modal').modal('open');
 
@@ -50,9 +69,28 @@ function initAddUser() {
             type: $('#add-select-type').parent(["0"]).children()[1].value
         };
 
-        $.post("/add_user", user, function (data, status) {
-            $('#add-user-modal').modal('close');
-            loadHtmlContent(data);
+        if (currentUserType === "Worker" && (user.type === "Manager" || user.type === "Worker")) {
+            let $toastContent = $('<span>Worker cannot add Manager or client</span>').add($('<button class="btn-flat toast-action red-text" onclick="dismissToasts()">Dismiss</button>'));
+            Materialize.toast($toastContent, 1000, '', function () {
+            });
+            return;
+        }
+
+        toggleLoading('open', "Adding. Please Wait...");
+        $('#add-user-modal').modal('close');
+        $.ajax({
+            type: "POST",
+            url: "/add_user",
+            data: user,
+            timeout: 5000,
+            error: function () {
+                toggleLoading('close');
+                toggleError('open');
+            },
+            success: function (data, status) {
+                toggleLoading('close');
+                loadHtmlContent(data);
+            }
         });
     });
     // $('#addUserModal').modal('toggle');
@@ -77,14 +115,54 @@ function initAddUser() {
     // });
 }
 
-function initDeleteUser(userid){
+function initDeleteUser(userid) {
     $('#confirm-modal').modal('open');
 
-    $('#confirm-delete-btn').click( () => {
+    $('#confirm-delete-btn').click(() => {
         // debugger;
-        $.post("/del_user?id=" + userid,null, function (data, status) {
-            loadHtmlContent(data);
+        toggleLoading('open');
+
+        $.ajax({
+            type: "POST",
+            url: "/del_user?id=" + userid,
+            data: null,
+            timeout: 5000,
+            error: function () {
+                toggleLoading('close');
+                toggleError('open');
+            },
+            success: function (data, status) {
+                toggleLoading('close');
+                loadHtmlContent(data);
+            }
         });
-    } );
+    });
+}
+
+function toggleError(toggle) {
+    $('#error-modal').modal(toggle);
+}
+
+function toggleLoading(toggle, title) {
+    if (title)
+        $('#loading-modal-title').html(title);
+    $('#loading-modal').modal(toggle);
+}
+
+function refreshUsers() {
+    toggleLoading('open', "Loading...");
+    $.ajax({
+        type: "GET",
+        url: "/users",
+        timeout: 5000,
+        error: function () {
+            toggleLoading('close');
+            toggleError('open');
+        },
+        success: function (data, status) {
+            toggleLoading('close');
+            loadHtmlContent(data);
+        }
+    });
 }
 

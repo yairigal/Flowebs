@@ -41,5 +41,7 @@ function loadUsersManagement(){
 }
 
 function loadStoresManagement(){
-    alert("working!")
+    $.get("/branches" ,function (data,status) {
+        loadHtmlContent(data);
+    });
 }

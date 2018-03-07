@@ -5,11 +5,11 @@ logos = [
     ,'/images/im3.jpg'
 ];
 products = [
-    {src:"/images/products/im1.jpg",price:'$15.99',name:"Flower 1",desc:"Random stuff",color:'pink'},
-    {src:"/images/products/im2.jpg",price:'$25.99',name:"Flower 2",desc:"Random stuff",color:'pink'},
-    {src:"/images/products/im3.jpg",price:'$35.99',name:"Flower 3",desc:"Random stuff",color:'red'},
-    {src:"/images/products/im4.jpg",price:'$45.99',name:"Flower 4",desc:"Random stuff",color:'yellow'},
-    {src:"/images/products/im5.jpg",price:'$55.99',name:"Flower 5",desc:"Random stuff",color:'green'}
+    {src:"/images/flowers/im1.jpg",price:'$15.99',name:"Flower 1",desc:"Random stuff",color:'pink'},
+    {src:"/images/flowers/im2.jpg",price:'$25.99',name:"Flower 2",desc:"Random stuff",color:'pink'},
+    {src:"/images/flowers/im3.jpg",price:'$35.99',name:"Flower 3",desc:"Random stuff",color:'red'},
+    {src:"/images/flowers/im4.jpg",price:'$45.99',name:"Flower 4",desc:"Random stuff",color:'yellow'},
+    {src:"/images/flowers/im5.jpg",price:'$55.99',name:"Flower 5",desc:"Random stuff",color:'green'}
 ];
 branches = [
     {active:true,name:"Branch1",id:1},
