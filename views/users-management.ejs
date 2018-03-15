@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="../public/css/loading_styles.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="row">
+    <a id="refresh-fab" class="btn-floating btn-large hoverable waves-effect waves-light left blue"
+       onclick="refreshUsers()">
+        <i class="material-icons">refresh</i>
+    </a>
+</div>
+
+<div class="row">
+    <% for(var user in data) { %>
+    <% var show = true; %>
+    <% if((data[user].type === "Worker" || data[user].type === "Manager") && currentUser.type !== "Manager"){ %>
+    <% show = false; %>
+    <% } %>
+    <% if(show) { %>
+    <div class="col s12 l6 xl4">
+        <div class="card user-card hoverable white darken-1">
+            <div class="card-font card-content grey-text text-darken-3">
+                <span class="user-card-title card-title"><%= data[user].username %></span>
+                <p><b>Password:</b> <%= users[user].password %></p>
+                <p><b>Type:</b> <%= users[user].type %></p>
+            </div>
+            <div class="card-action user-card-action">
+                <a onclick="initEditUser(<%= user %>)">Edit</a>
+                <a onclick="initDeleteUser(<%= user %>)">Delete</a>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% } %>
+</div>
+<div class="row">
+    <a id="add-user-fab" class="btn-floating btn-large hoverable waves-effect waves-light right red"
+       onclick="initAddUser('<%= currentUser.type %>')"><i
+                class="material-icons">add</i></a>
+
+</div>
+
+
+<!-- Modal Structure -->
+<div id="confirm-modal" class="modal input-modal">
+    <div class="modal-content">
+        <h5>Are you sure you want to delete this user?</h5>
+        <p id="undone">This action cannot be undone!</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-red btn-flat modal-footer-btn ">Cancel</a>
+        <a id="confirm-delete-btn" class="modal-action modal-close waves-effect waves-green btn-flat modal-footer-btn ">Delete</a>
+    </div>
+</div>
+
+<div id="error-modal" class="modal">
+    <div id="error-content" class="modal-content">
+        <h5 id="error-modal-title" class="center-align">Error</h5>
+        <i class="material-icons">error</i>
+    </div>
+</div>
+
+<div id="loading-modal" class="modal">
+    <div class="modal-content">
+        <div class= "center-container">
+            <div id="loading-spinner" class="preloader-wrapper small active center-clock">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <h5 id="loading-modal-title" class="center-clock">Deleting. Please Wait...</h5>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/users-management.js"></script>
+
+
+
+
+
+

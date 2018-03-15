@@ -1,0 +1,86 @@
+
+<div id="catalog-header" class="container-fluid">
+    <div class="carousel carousel-slider center " data-indicators="true">
+        <div class="carousel-fixed-item center middle-indicator">
+            <div class="left">
+                <a href="Previo"
+                   class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i
+                            class="material-icons left  middle-indicator-text">chevron_left</i></a>
+            </div>
+
+            <div class="right">
+                <a href="Siguiente"
+                   class=" moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i
+                            class="material-icons right middle-indicator-text">chevron_right</i></a>
+            </div>
+        </div>
+        <div id="carousel-background1" class="carousel-item red white-text" href="#one!">
+            <img class="background" src="../images/flowers/background1.jpg">
+            <h2>First Panel</h2>
+            <p class="white-text">This is your first panel</p>
+        </div>
+        <div id="carousel-background2" class="carousel-item amber white-text" href="#two!">
+            <h2>Second Panel</h2>
+            <p class="white-text">This is your second panel</p>
+        </div>
+        <div id="carousel-background3" class="carousel-item white-text" href="#three!">
+            <h2>Third Panel</h2>
+            <p class="white-text">This is your third panel</p>
+        </div>
+        <div id="carousel-background4" class="carousel-item blue white-text" href="#four!">
+            <h3>This is our big Tagline!</h3>
+            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <% for(i = 0;i < flowers.length;++i){ %>
+        <div class="col l3 m6 s12">
+            <div class="card">
+                <div class="waves-effect waves-block waves-light card-image image-container"
+                     onclick="loadUsersManagement()">
+                    <img class="card-image-jpg" src=<%= flowers[i].src %>>
+                    <div class="card-content">
+                        <h5><%= flowers[i].name %></h5>
+                        <div style="color: darkgray">
+                            Price: <span style="color: green"><%= flowers[i].price %></span>
+                        </div>
+
+                    </div>
+                    <div class="screen"></div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<% if(currentUser.type === "Manager"){ %>
+<div class="row">
+    <a id="add-user-fab" class="btn-floating btn-large hoverable waves-effect waves-light right red"
+       onclick="initAddProduct()"><i
+                class="material-icons">add</i></a>
+
+</div>
+<% } %>
+
+<div id="add-product-modal" class="modal input-modal">
+    <div class="modal-content">
+        <form id="upload-form" action="/catalog/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="pic" accept="image/*">
+        </form>
+
+        <form id="upload-form-url" action="/catalog/upload" method="post" enctype="multipart/form-data">
+            <input id="url-textbox" type="url">
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-red btn-flat modal-footer-btn ">Cancel</a>
+        <a id="confirm-add-btn" onclick="submitUploadForm()"
+           class="modal-action modal-close waves-effect waves-green btn-flat modal-footer-btn ">Add</a>
+    </div>
+</div>
+

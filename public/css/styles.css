@@ -1,0 +1,332 @@
+@media (min-width: 991px) {
+    #toast-container {
+        top: auto !important;
+        left: auto !important;
+        bottom: 7%;
+        right: 5%;
+    }
+
+    .toast {
+        width: 500px !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .input-modal {
+        width: 400px;
+    }
+    /*#confirm-modal {*/
+        /*width: 500px;*/
+    /*}*/
+}
+
+@media (max-width: 991px ) {
+    #header-container {
+        width: 98%;
+    }
+}
+
+#deleteUserBtn {
+    float: right;
+}
+
+.menu-item {
+    font-size: 18px;
+}
+
+#background-image {
+    filter: blur(1px) brightness(0.9);
+}
+
+#parallax-text {
+    float: left;
+    height: 80px;
+    font-size: 80px;
+    align-content: center;
+    margin-bottom: 25px;
+    width: 100%;
+
+}
+
+#parallax-container {
+    overflow: hidden;
+    text-align: center;
+    align-content: center;
+}
+
+#parallax-logo {
+    /*background-image: url("../images/logo-white.png");*/
+    margin-right: 0px;
+    height: 100px;
+    width: auto;
+    margin-bottom: -22px;
+}
+
+#moto {
+    margin-top: 100px;
+    font-size: 22px;
+
+}
+
+#login-button-parallax {
+    font-size: 16px;
+    width: 150px;
+    margin-top: 30px;
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+    color: #424242;
+}
+
+.info {
+    margin-top: 50px;
+}
+
+.page-footer {
+    margin-top: 30px;
+    height: 250px;
+}
+
+#by {
+    margin-left: 15px;
+}
+
+#copyright {
+    margin-top: 50px;
+}
+
+#modal-logo {
+    /*padding: 100px;*/
+    width: 120px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.form {
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.toast {
+    /*width: 400px !important;*/
+    color: white !important;
+    font-size: 20px;
+}
+
+.prefix {
+    margin-left: -10px;
+    color: #424242
+}
+
+.input-field .prefix.active {
+    color: #4CAF50;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+    color: #4CAF50 !important;
+}
+
+/* label underline focus color */
+.row .input-field input:focus {
+    border-bottom: 1px solid #4CAF50 !important;
+    box-shadow: 0 1px 0 0 #4CAF50 !important
+}
+
+.modal-title {
+    /*color: #4CAF50;*/
+    margin-top: -10px;
+    font-size: 28px;
+    /*padding-left: 15px;*/
+    text-align: center;
+}
+
+.card-image-jpg {
+    max-width: 100%;
+    max-hight: 100%;
+    filter: brightness(0.75)
+}
+
+.card-image {
+    position: relative;
+}
+
+.screen {
+    width: 200px;
+    height: 30px;
+    background: black;
+    position: absolute;
+    fill: rgb(255, 255, 255)
+
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container .screen {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #FFF;
+    bottom: 0;
+    display: block;
+    background: rgba(0, 0, 0, .2);
+}
+
+.card-title {
+    font-size: 28px !important;
+
+}
+
+.user-card-title {
+    margin-bottom: 15px !important;
+}
+
+.card-left {
+    margin-right: 10px;
+}
+
+.card-right {
+    margin-left: 10px;
+}
+
+.card-font {
+    font-size: 18px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+#edit-type-dropdown {
+    width: auto;
+    display: block;
+    float: left;
+    margin-top: -3px;
+}
+
+#type-edit-icon {
+    float: left;
+    position: relative;
+    margin-right: 10px;
+    margin-left: -20px;
+}
+
+
+#person-login-icon {
+    margin-top: 20px;
+}
+
+#lock-login-icon {
+    margin-top: 10px;
+}
+
+.modal-footer-btn {
+    font-weight: 600;
+}
+
+#add-user-fab {
+    margin-top: -60px;
+    margin-right: 40px;
+}
+
+#undone {
+    font-size: 20px;
+}
+
+/* just for jsfiddle */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: 'liga';
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.middle-indicator{
+    position:absolute;
+    top:50%;
+}
+.middle-indicator-text{
+    font-size: 4.2rem;
+}
+a.middle-indicator-text{
+    color:white !important;
+}
+.content-indicator{
+    width: 64px;
+    height: 64px;
+    background: none;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+/*.indicators{*/
+    /*visibility: hidden;*/
+/*}*/
+
+/*#carousel-background1 {*/
+    /*max-width: 100%;*/
+    /*max-height: 100%;*/
+    /*background-size: 100%;;*/
+    /*background: url(../images/flowers/background1.jpg);*/
+
+/*}*/
+/*#carousel-background1 {*/
+    /*max-width: 100%;*/
+    /*max-height: 100%;*/
+    /*background-size: 100%;;*/
+    /*background: url(../images/flowers/background1.jpg);*/
+
+/*}*/
+#carousel-background2 {
+    max-width: 100%;
+    max-height: 100%;
+    background-size: cover;
+    background: url(../images/flowers/background2.png) no-repeat 50% 50%;
+}
+#carousel-background3 {
+    max-width: 100%;
+    max-height: 100%;
+    background-size: cover;
+    background: url(../images/flowers/background3.jpeg) no-repeat 50% 50%;
+}
+#carousel-background4 {
+    max-width: 100%;
+    max-height: 100%;
+    background-size: cover;
+    background: url(../images/flowers/background4.jpeg) no-repeat 50% 50%;
+}
+/*.slider-title {*/
+    /*position: absolute;*/
+/*}*/
+
+#catalog-header{
+    margin-bottom: 30px;
+}
+
